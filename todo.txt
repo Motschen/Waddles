@@ -1,2 +1,3 @@
 -Fix head
 -Fix baby penguin size
+-Fix penguin loot table

@@ -1,12 +1,19 @@
 {
+  "schemaVersion": 1,
   "id": "waddles",
   "name": "Waddles",
   "description": "Waddles adds somewhat realistic Adélie penguins that waddle",
+  "authors": [
+    "Girafi - Original author",
+    "Motschen - Porting to 1.15 Fabric"
+  ],
   "version": "$version",
-  "side": "universal",
+  "icon": "assets/waddles/logo.png",
+  "environment": "*",
   "initializer": "com.girafi.waddles.Waddles",
-  "requires": {
-    "fabric": "*"
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.15"
   },
   "mixins": {
     "common": "waddles.common.json"

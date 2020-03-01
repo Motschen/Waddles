@@ -22,9 +22,9 @@ public class PenguinRegistry {
     private static EntityType createEntity(Class<? extends Entity> entityClass, Function<? super World, ? extends Entity> entityInstance, int eggPrimary, int eggSecondary) {
         String name = classToRegistryName(entityClass);
         Identifier id = new Identifier(Reference.MOD_ID, name);
-        EntityType entityType = Registry.register(Registry.ENTITY_TYPE, id, FabricEntityTypeBuilder.create(EntityCategory.CREATURE, entityInstance).size(0.4F, 0.95F).trackable(64, 1).build());
+        EntityType entityType = Registry.register(Registry.ENTITY_TYPE, id, FabricEntityTypeBuilder.create(EntityCategory.CREATURE, EntityAdeliePenguin::new).size(0.4F, 0.95F).trackable(64, 1).build());
 
-        Item spawnEgg = new SpawnEggItem(entityType, eggPrimary, eggSecondary, (new Item.Settings()).itemGroup(ItemGroup.MISC));
+        Item spawnEgg = new SpawnEggItem(entityType, eggPrimary, eggSecondary, (new Item.Settings()).group(ItemGroup.MISC));
         Registry.register(Registry.ITEM, new Identifier(Reference.MOD_ID, name + "_spawn_egg"), spawnEgg);
         return entityType;
     }

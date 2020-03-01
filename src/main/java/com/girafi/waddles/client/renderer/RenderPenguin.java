@@ -5,21 +5,21 @@ import com.girafi.waddles.entity.EntityAdeliePenguin;
 import com.girafi.waddles.utils.Reference;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.BipedEntityRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
-public class RenderPenguin extends BipedEntityRenderer<EntityAdeliePenguin, ModelPenguin> {
+public class RenderPenguin extends MobEntityRenderer<EntityAdeliePenguin, ModelPenguin> {
 
     public RenderPenguin(EntityRenderDispatcher dispatcher) {
         super(dispatcher, new ModelPenguin(), 0.5F);
     }
 
     @Override
-    protected Identifier getTexture(EntityAdeliePenguin penguin) {
+    public Identifier getTexture(EntityAdeliePenguin penguin) {
         if (penguin.hasCustomName()) {
             String name = Objects.requireNonNull(penguin.getCustomName()).getString().toLowerCase().trim();
             if (name.equals("joshie") || name.equals("joshiejack")) {
@@ -28,7 +28,7 @@ public class RenderPenguin extends BipedEntityRenderer<EntityAdeliePenguin, Mode
                 return this.getPenguinTexture("darkosto");
             }
         }
-        return penguin.isChild() ? this.getPenguinTexture("adelie_child") : this.getPenguinTexture("adelie");
+        return penguin.isBaby() ? this.getPenguinTexture("adelie_child") : this.getPenguinTexture("adelie");
     }
 
     private Identifier getPenguinTexture(String fileName) {

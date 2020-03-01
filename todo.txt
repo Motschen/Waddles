@@ -1,0 +1,2 @@
+-Fix head
+-Fix baby penguin size
